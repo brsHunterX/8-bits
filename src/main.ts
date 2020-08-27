@@ -1,1 +1,0 @@
-alert('Hello Hot Reload :D');
