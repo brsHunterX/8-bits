@@ -3,7 +3,7 @@ const CopyPlugin = require('copy-webpack-plugin');
 
 module.exports = {
   mode: 'production', // development
-  entry: './src/Asteroids.ts',
+  entry: './src/Project.ts',
   devServer: {
     hot: true,
     port: 8080,
@@ -24,6 +24,9 @@ module.exports = {
   ],
   resolve: {
     extensions: ['.ts', '.js'],
+    alias: {
+      '@': path.resolve(__dirname, 'src'),
+    }
   },
   module: {
     rules: [

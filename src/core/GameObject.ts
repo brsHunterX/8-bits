@@ -19,7 +19,7 @@ export default abstract class GameObject {
    * 
    * @param context 
    */
-  public render(context: CanvasRenderingContext2D): void { }
+  public render(context: CanvasRenderingContext2D): void {}
 
   /**
    * 

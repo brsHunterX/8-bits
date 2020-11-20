@@ -1,32 +1,87 @@
 import Vector from './Vector';
 import GameObject from './GameObject';
 import GameSettings from './GameSettings';
+// import GameAssets from '../assets/GameAssets';
 
+/**
+ *
+ *
+ * @export
+ * @class Game
+ */
 export default class Game {
 
-  // CANVAS
-
+  /**
+   *
+   *
+   * @type {HTMLElement}
+   * @memberof Game
+   */
   public target!: HTMLElement;
+  
+  /**
+   *
+   *
+   * @type {HTMLCanvasElement}
+   * @memberof Game
+   */
   public canvas!: HTMLCanvasElement;
+
+  /**
+   *
+   *
+   * @type {CanvasRenderingContext2D}
+   * @memberof Game
+   */
   public context!: CanvasRenderingContext2D;
 
-  // GAME LOOP
-
+  /**
+   *
+   *
+   * @type {number}
+   * @memberof Game
+   */
   public fps: number = 0;
+
+  /**
+   *
+   *
+   * @type {number}
+   * @memberof Game
+   */
   public deltaTime: number = 0;
+
+  /**
+   *
+   *
+   * @type {number}
+   * @memberof Game
+   */
   public oldTimeStamp: number = 0;
 
+  // /**
+  //  *
+  //  *
+  //  * @type {GameAssets}
+  //  * @memberof Game
+  //  */
+  // public assets: GameAssets = new GameAssets();
   
-  // OBJECTS
-  
+  /**
+   *
+   *
+   * @type {GameObject[]}
+   * @memberof Game
+   */
   public gameObjects: GameObject[] = [];
   
   /**
-   * 
-   * @param settings 
+   * Creates an instance of Game.
+   * @param {GameSettings} settings
+   * @memberof Game
    */
   constructor(
-    public settings: GameSettings = new GameSettings(),
+    public settings: GameSettings,
   ) {
 
     this._createCanvas();
@@ -41,7 +96,10 @@ export default class Game {
   }
 
   /**
-   * 
+   *
+   *
+   * @private
+   * @memberof Game
    */
   private _createCanvas(): void {
 
@@ -54,7 +112,10 @@ export default class Game {
   }
 
   /**
-   * 
+   *
+   *
+   * @private
+   * @memberof Game
    */
   private _resizeCanvas() {
 
@@ -63,7 +124,10 @@ export default class Game {
   }
   
   /**
-   * 
+   *
+   *
+   * @private
+   * @memberof Game
    */
   private _markEdges() {
 
@@ -73,7 +137,10 @@ export default class Game {
   }
 
   /**
-   * 
+   *
+   *
+   * @private
+   * @memberof Game
    */
   private _computeDeltaTime(): void {
 
@@ -85,16 +152,22 @@ export default class Game {
   }
 
   /**
-   * 
-   */ 
+   *
+   *
+   * @private
+   * @memberof Game
+   */
   private _computeFramePerSecond(): void {
 
     this.fps = Math.round(1 / this.deltaTime);
   }
 
   /**
-   * 
-   * @param fps 
+   *
+   *
+   * @private
+   * @param {number} fps
+   * @memberof Game
    */
   private _renderFPS(fps: number): void {
 
@@ -104,7 +177,10 @@ export default class Game {
   }
 
   /**
-   * 
+   *
+   *
+   * @private
+   * @memberof Game
    */
   private _clean(): void {
 
@@ -116,7 +192,10 @@ export default class Game {
   }
 
   /**
-   * 
+   *
+   *
+   * @private
+   * @memberof Game
    */
   private _render(): void {
 
@@ -134,7 +213,10 @@ export default class Game {
   }
 
   /**
-   * 
+   *
+   *
+   * @private
+   * @memberof Game
    */
   private _updateGameObjects(): void {
 
@@ -144,23 +226,13 @@ export default class Game {
     });
   }
 
-  private _detectCollision() {
-
-    this.gameObjects.forEach((objectA: GameObject) => {
-
-      console.log(objectA);
-
-      this.gameObjects.forEach((objectB: GameObject) => {
-
-        console.log(objectB);
-      });
-    });
-  }
-
-  /**
-   * 
-   */
-  private _update(): void {
+ /**
+  *
+  *
+  * @private
+  * @memberof Game
+  */
+ private _update(): void {
 
     this._computeDeltaTime();
     this._computeFramePerSecond();
@@ -168,14 +240,15 @@ export default class Game {
     this._render();
     this._updateGameObjects();
 
-    this._detectCollision();
-
     window.requestAnimationFrame(() => this._update());
   }
 
   /**
-   * 
-   * @param gameObject 
+   *
+   *
+   * @param {GameObject} gameObject
+   * @return {*}  {boolean}
+   * @memberof Game
    */
   public existsGameObject(gameObject: GameObject): boolean {
 
@@ -188,9 +261,11 @@ export default class Game {
   }
 
   /**
-   * 
-   * @param gameObject 
-   * @param position 
+   *
+   *
+   * @param {GameObject} gameObject
+   * @param {Vector} [position]
+   * @memberof Game
    */
   public instantiateObject(gameObject: GameObject, position?: Vector): void {
 
@@ -205,8 +280,10 @@ export default class Game {
   }
 
   /**
-   * 
-   * @param gameObject 
+   *
+   *
+   * @param {GameObject} gameObject
+   * @memberof Game
    */
   public destroyObject(gameObject: GameObject): void {
 

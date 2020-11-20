@@ -1,45 +1,73 @@
-export default class GameSettings {
+/**
+ *
+ *
+ * @export
+ * @abstract
+ * @class GameSettings
+ */
+export default abstract class GameSettings {
 
-  constructor(
-    
-    /**
-     * 
-     */
-    public gameTarget: string = 'app',
+  /**
+   *
+   *
+   * @type {string}
+   * @memberof GameSettings
+   */
+  public gameTarget: string = 'game';
 
-    /**
-     * 
-     */
-    public gameName: string = '8-Bits',
-    
-    /**
-     * 
-     */
-    public gameEnvrioment: string = 'development',
-    
-    /**
-     * 
-     */
-    public gameDebug: boolean = (gameEnvrioment === 'production') ? false : true,
-    
-    /**
-     * 
-     */
-    public gameDebugFPS: boolean = (gameEnvrioment === 'production') ? false : true,
-    
-    /**
-     * 
-     */
-    public gameCanvasWidth: number = 640,
-    
-    /**
-     * 
-     */
-    public gameCanvasHeight: number = 480,
-    
-    /**
-     * 
-     */
-    public gameCanvasMarkEdges: boolean = true,
-  ) { }
+  /**
+   *
+   *
+   * @type {string}
+   * @memberof GameSettings
+   */
+  public gameName: string = '8-Bits';
+
+  /**
+   *
+   *
+   * @type {string}
+   * @memberof GameSettings
+   */
+  public gameEnvrioment: string = 'development';
+
+  /**
+   *
+   *
+   * @type {boolean}
+   * @memberof GameSettings
+   */
+  public gameDebug: boolean = (this.gameEnvrioment === 'production') ? false : true;
+
+  /**
+   *
+   *
+   * @type {boolean}
+   * @memberof GameSettings
+   */
+  public gameDebugFPS: boolean = (this.gameEnvrioment === 'production') ? false : true;
+
+  /**
+   *
+   *
+   * @type {number}
+   * @memberof GameSettings
+   */
+  public gameCanvasWidth: number = 640;
+
+  /**
+   *
+   *
+   * @type {number}
+   * @memberof GameSettings
+   */
+  public gameCanvasHeight: number = 480;
+
+  /**
+   *
+   *
+   * @type {boolean}
+   * @memberof GameSettings
+   */
+  public gameCanvasMarkEdges: boolean = true;
 }
