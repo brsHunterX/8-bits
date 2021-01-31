@@ -3,7 +3,7 @@ const CopyPlugin = require('copy-webpack-plugin');
 
 module.exports = {
   mode: 'production', // development
-  entry: './src/Project.ts',
+  entry: './src/Main.ts',
   devServer: {
     hot: true,
     port: 8080,
